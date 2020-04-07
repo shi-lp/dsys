@@ -1,0 +1,60 @@
+[
+  {
+    "checked": false,
+    "children": [
+      {
+        "checked": false,
+        "children": [
+          {
+            "checked": false,
+            "id": "4",
+            "name": "我是4",
+            "open": false,
+            "order": -1,
+            "parent": false,
+            "pid": "2"
+          },
+          {
+            "checked": false,
+            "id": "5",
+            "name": "我是5",
+            "open": false,
+            "order": -1,
+            "parent": false,
+            "pid": "2"
+          }
+        ],
+        "id": "2",
+        "name": "我是2",
+        "open": false,
+        "order": 1,
+        "parent": false,
+        "pid": "1"
+      },
+      {
+        "checked": false,
+        "id": "3",
+        "name": "我是3",
+        "open": false,
+        "order": 4,
+        "parent": false,
+        "pid": "1"
+      }
+    ],
+    "id": "1",
+    "name": "我是1",
+    "open": false,
+    "order": 1,
+    "parent": false,
+    "pid": "-1"
+  },
+  {
+    "checked": false,
+    "id": "6",
+    "name": "我是6",
+    "open": false,
+    "order": -1,
+    "parent": false,
+    "pid": "-1"
+  }
+]

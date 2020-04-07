@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsys.simp.dao.GoodsSKUMapper">
+  <resultMap id="BaseResultMap" type="com.dsys.simp.bean.GoodsSKU">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="SKU_CODE" jdbcType="VARCHAR" property="skuCode" />
+    <result column="SKU_NAME" jdbcType="VARCHAR" property="skuName" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="STOCK" jdbcType="INTEGER" property="stock" />
+    <result column="SHOP_CODE" jdbcType="VARCHAR" property="shopCode" />
+    <result column="SPU_CODE" jdbcType="VARCHAR" property="spuCode" />
+    <result column="SKU_STATUS" jdbcType="VARCHAR" property="skuStatus" />
+    <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SKU_CODE, SKU_NAME, PRICE, STOCK, SHOP_CODE, SPU_CODE, SKU_STATUS, DO_FLAG, CREATE_USER, 
+    CREATE_TIME, UPDATE_USER, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sp_goods_sku_tb
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sp_goods_sku_tb
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.dsys.simp.bean.GoodsSKU">
+    insert into sp_goods_sku_tb (ID, SKU_CODE, SKU_NAME, 
+      PRICE, STOCK, SHOP_CODE, 
+      SPU_CODE, SKU_STATUS, DO_FLAG, 
+      CREATE_USER, CREATE_TIME, UPDATE_USER, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{skuCode,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER}, #{shopCode,jdbcType=VARCHAR}, 
+      #{spuCode,jdbcType=VARCHAR}, #{skuStatus,jdbcType=VARCHAR}, #{doFlag,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsys.simp.bean.GoodsSKU">
+    insert into sp_goods_sku_tb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="skuCode != null">
+        SKU_CODE,
+      </if>
+      <if test="skuName != null">
+        SKU_NAME,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="stock != null">
+        STOCK,
+      </if>
+      <if test="shopCode != null">
+        SHOP_CODE,
+      </if>
+      <if test="spuCode != null">
+        SPU_CODE,
+      </if>
+      <if test="skuStatus != null">
+        SKU_STATUS,
+      </if>
+      <if test="doFlag != null">
+        DO_FLAG,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="shopCode != null">
+        #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="spuCode != null">
+        #{spuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuStatus != null">
+        #{skuStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="doFlag != null">
+        #{doFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsys.simp.bean.GoodsSKU">
+    update sp_goods_sku_tb
+    <set>
+      <if test="skuCode != null">
+        SKU_CODE = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        SKU_NAME = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="stock != null">
+        STOCK = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="shopCode != null">
+        SHOP_CODE = #{shopCode,jdbcType=VARCHAR},
+      </if>
+      <if test="spuCode != null">
+        SPU_CODE = #{spuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuStatus != null">
+        SKU_STATUS = #{skuStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="doFlag != null">
+        DO_FLAG = #{doFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsys.simp.bean.GoodsSKU">
+    update sp_goods_sku_tb
+    set SKU_CODE = #{skuCode,jdbcType=VARCHAR},
+      SKU_NAME = #{skuName,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      STOCK = #{stock,jdbcType=INTEGER},
+      SHOP_CODE = #{shopCode,jdbcType=VARCHAR},
+      SPU_CODE = #{spuCode,jdbcType=VARCHAR},
+      SKU_STATUS = #{skuStatus,jdbcType=VARCHAR},
+      DO_FLAG = #{doFlag,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

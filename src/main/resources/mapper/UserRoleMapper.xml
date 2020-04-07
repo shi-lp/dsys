@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsys.base.dao.UserRoleDao">
+    <resultMap id="BaseResultMap" type="com.dsys.base.bean.UserRole">
+        <result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+        <result column="ROLE_CODE" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag"/>
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        USER_ID, ROLE_CODE, DO_FLAG,
+      CREATE_USER, CREATE_TIME, UPDATE_USER,
+      UPDATE_TIME
+    </sql>
+    <insert id="insert" parameterType="com.dsys.base.bean.UserRole">
+    insert into bp_userrole_tb (USER_ID, ROLE_CODE, DO_FLAG,
+      CREATE_USER, CREATE_TIME, UPDATE_USER,
+      UPDATE_TIME)
+    values (#{userId,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, #{doFlag,jdbcType=VARCHAR},
+      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+    <select id="listByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM bp_userrole_tb
+        <where>
+            USER_ID = #{userId}
+        </where>
+    </select>
+    <insert id="insertSelective" parameterType="com.dsys.base.bean.UserRole">
+        insert into bp_userrole_tb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="roleCode != null">
+                ROLE_CODE,
+            </if>
+            <if test="doFlag != null">
+                DO_FLAG,
+            </if>
+            <if test="createUser != null">
+                CREATE_USER,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateUser != null">
+                UPDATE_USER,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleCode != null">
+                #{roleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="doFlag != null">
+                #{doFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUser != null">
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+</mapper>

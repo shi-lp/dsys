@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsys.base.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.dsys.base.bean.User">
+        <id column="S_ID" jdbcType="VARCHAR" property="sId"/>
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="PWD" jdbcType="VARCHAR" property="pwd"/>
+        <result column="ACCOUNT" jdbcType="VARCHAR" property="account"/>
+        <result column="MOBILE_PHONE" jdbcType="VARCHAR" property="mobilePhone"/>
+        <result column="PHONE" jdbcType="VARCHAR" property="phone"/>
+        <result column="ONLINE_STATUS" jdbcType="VARCHAR" property="onlineStatus"/>
+        <result column="IP" jdbcType="VARCHAR" property="ip"/>
+        <result column="E_MAIL" jdbcType="VARCHAR" property="eMail"/>
+        <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag"/>
+        <result column="THEME_TYPE" jdbcType="VARCHAR" property="themeType"/>
+        <result column="DEVICE_TYPE" jdbcType="VARCHAR" property="deviceType"/>
+        <result column="LEVEL" jdbcType="VARCHAR" property="level"/>
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		S_ID, USER_NAME, PWD, ACCOUNT, MOBILE_PHONE, PHONE, ONLINE_STATUS, IP,
+		E_MAIL, DO_FLAG,
+		THEME_TYPE, DEVICE_TYPE, LEVEL, CREATE_USER, CREATE_TIME, UPDATE_USER,
+		UPDATE_TIME
+	</sql>
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="sId" parameterType="com.dsys.base.bean.User">
+        insert into bp_user_tb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sId != null">
+                S_ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="pwd != null">
+                PWD,
+            </if>
+            <if test="account != null">
+                ACCOUNT,
+            </if>
+            <if test="mobilePhone != null">
+                MOBILE_PHONE,
+            </if>
+            <if test="phone != null">
+                PHONE,
+            </if>
+            <if test="onlineStatus != null">
+                ONLINE_STATUS,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="eMail != null">
+                E_MAIL,
+            </if>
+            <if test="doFlag != null">
+                DO_FLAG,
+            </if>
+            <if test="themeType != null">
+                THEME_TYPE,
+            </if>
+            <if test="deviceType != null">
+                DEVICE_TYPE,
+            </if>
+            <if test="level != null">
+                LEVEL,
+            </if>
+            <if test="createUser != null">
+                CREATE_USER,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateUser != null">
+                UPDATE_USER,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sId != null">
+                #{sId,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilePhone != null">
+                #{mobilePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="onlineStatus != null">
+                #{onlineStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="eMail != null">
+                #{eMail,jdbcType=VARCHAR},
+            </if>
+            <if test="doFlag != null">
+                #{doFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="themeType != null">
+                #{themeType,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceType != null">
+                #{deviceType,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUser != null">
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="findUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM BP_USER_TB
+        <where>
+            S_ID = #{userId}
+        </where>
+    </select>
+
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM BP_USER_TB
+    <where>
+        USER_NAME = #{userName}
+    </where>
+</select>
+
+    <select id="existPhone" resultType="Integer">
+        SELECT count(*) as sumCount FROM BP_USER_TB
+        <where>
+            PHONE = #{phoneNumber} OR PHONE_NUMBER = #{phoneNumber}
+        </where>
+    </select>
+
+    <select id="accountIsExist" resultType="Integer">
+        SELECT count(*) as sumCount FROM BP_USER_TB
+        <where>
+            ACCOUNT = #{account}
+        </where>
+    </select>
+
+    <select id="findUser" parameterType="com.dsys.base.bean.User"
+            resultType="com.dsys.base.bean.User">
+        SELECT * FROM BP_USER_TB
+        <where>
+            <if test="user.account != null">
+                account = #{user.account} AND
+            </if>
+            <if test="user.userName != null">
+                user_Name = #{user.userName} AND
+            </if>
+            <if test="user.phone != null">
+                phone = #{user.phone} AND
+            </if>
+            <if test="user.eMail != null">
+                e_mail = #{user.eMail} AND
+            </if>
+            <if test="user.pwd != null">
+                pwd = #{user.pwd}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectPageUser" parameterType="com.dsys.base.bean.User"
+            resultType="com.dsys.base.bean.User">
+        SELECT * FROM BP_USER_TB
+        <where>
+            <if test="user.account != null">
+                account = #{user.account} AND
+            </if>
+            <if test="user.userName != null">
+                user_Name = #{user.userName} AND
+            </if>
+            <if test="user.phone != null">
+                phone = #{user.phone} AND
+            </if>
+            <if test="user.eMail != null">
+                e_mail = #{user.eMail} AND
+            </if>
+            <if test="user.pwd != null">
+                pwd = #{user.pwd}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.dsys.base.bean.User">
+        update bp_user_tb
+        <set>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null">
+                PWD = #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                ACCOUNT = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="mobilePhone != null">
+                MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                PHONE = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="onlineStatus != null">
+                ONLINE_STATUS = #{onlineStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="eMail != null">
+                E_MAIL = #{eMail,jdbcType=VARCHAR},
+            </if>
+            <if test="doFlag != null">
+                DO_FLAG = #{doFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="themeType != null">
+                THEME_TYPE = #{themeType,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceType != null">
+                DEVICE_TYPE = #{deviceType,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                LEVEL = #{level,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                CREATE_USER = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateUser != null">
+                UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where S_ID = #{sId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.dsys.base.bean.User">
+    update bp_user_tb
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      PWD = #{pwd,jdbcType=VARCHAR},
+      ACCOUNT = #{account,jdbcType=VARCHAR},
+      MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ONLINE_STATUS = #{onlineStatus,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      E_MAIL = #{eMail,jdbcType=VARCHAR},
+      DO_FLAG = #{doFlag,jdbcType=VARCHAR},
+      THEME_TYPE = #{themeType,jdbcType=VARCHAR},
+      DEVICE_TYPE = #{deviceType,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where S_ID = #{sId,jdbcType=VARCHAR}
+  </update>
+</mapper>
