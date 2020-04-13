@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.dsys.base.bean.Model;
 import com.dsys.base.dao.ModelDao;
-import com.dsys.base.service.IModelService;
+import com.dsys.common.IModelService;
 
 import lombok.extern.slf4j.Slf4j;
 

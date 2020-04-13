@@ -6,12 +6,11 @@ import com.dsys.base.bean.TreeBean;
 import com.dsys.base.dao.DictInfoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.dsys.base.bean.DictInfo;
-import com.dsys.base.service.IDictInfoService;
+import com.dsys.common.IDictInfoService;
 
 /**        
  * Title: DictInfoServiceImpl.java    

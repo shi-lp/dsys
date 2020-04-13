@@ -1,8 +1,8 @@
 package com.dsys.base.controller;
 
 import com.aliyuncs.exceptions.ClientException;
-import com.dsys.base.service.IMailService;
-import com.dsys.base.service.IPhoneService;
+import com.dsys.common.IMailService;
+import com.dsys.common.IPhoneService;
 import com.dsys.base.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

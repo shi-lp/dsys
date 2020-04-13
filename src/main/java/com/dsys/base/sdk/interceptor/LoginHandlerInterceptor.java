@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.dsys.base.bean.User;
-import com.dsys.base.service.IUserService;
-import com.dsys.base.service.impl.UserServiceImpl;
+//import com.dsys.base.bean.User;
+//import com.dsys.common.IUserService;
+//import com.dsys.base.service.impl.UserServiceImpl;
 
 /**
  * 
@@ -29,9 +29,9 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 	
 	
 	@Bean
-	public IUserService getUserService(){
-		return new UserServiceImpl();
-	}
+//	public IUserService getUserService(){
+//		return new UserServiceImpl();
+//	}
 
 	/** 
 	 * @discription 在业务处理器处理请求之前被调用。预处理，可以进行编码、安全控制、权限校验等处理

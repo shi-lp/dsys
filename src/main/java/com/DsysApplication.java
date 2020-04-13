@@ -19,7 +19,7 @@ import org.springframework.cache.annotation.EnableCaching;
  * @version 1.0
  * //开启基于注解的缓存
  */
-@MapperScan(value={"com.dsys.*.dao","com.dsys.*.service"})
+@MapperScan(basePackages={"com.dsys.*.dao","com.dsys.*.service"})
 @SpringBootApplication
 @EnableCaching
 public class DsysApplication {

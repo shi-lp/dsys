@@ -1,10 +1,9 @@
 package com.dsys.base.controller;
 
 import com.dsys.base.bean.SysSetup;
-import com.dsys.base.service.ISysSetupService;
+import com.dsys.common.ISysSetupService;
 import com.dsys.base.util.Constants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dsys.base.bean.User;
 import com.dsys.base.sdk.token.TokenUtil;
 import com.dsys.base.sdk.token.UserLoginToken;
-import com.dsys.base.service.IUserService;
+import com.dsys.common.IUserService;
 import com.dsys.base.util.ToolUtil;
 
 import lombok.extern.slf4j.Slf4j;

@@ -30,7 +30,7 @@ import com.dsys.base.sdk.mail.properties.JsonTable;
 import com.dsys.base.sdk.mail.properties.MailProperties;
 import com.dsys.base.sdk.mail.properties.MailType;
 import com.dsys.base.sdk.mail.properties.TextString;
-import com.dsys.base.service.IMailService;
+import com.dsys.common.IMailService;
 import com.dsys.base.util.Constants;
 
 /**        

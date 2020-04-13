@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsys.cim.mapper.ReceiveAddressMapper">
+  <resultMap id="BaseResultMap" type="com.dsys.cim.bean.ReceiveAddress">
+    <id column="S_ID" jdbcType="DECIMAL" property="sId" />
+    <result column="CUSTOMER_ID" jdbcType="DECIMAL" property="customerId" />
+    <result column="ADDRESSEE_NAME" jdbcType="VARCHAR" property="addresseeName" />
+    <result column="PHONE_NUMBER" jdbcType="DECIMAL" property="phoneNumber" />
+    <result column="TELEPHONE_NUMBER" jdbcType="VARCHAR" property="telephoneNumber" />
+    <result column="DEFAULT_STATUS" jdbcType="TINYINT" property="defaultStatus" />
+    <result column="POST_CODE" jdbcType="DECIMAL" property="postCode" />
+    <result column="COUNTRY_CN" jdbcType="VARCHAR" property="countryCn" />
+    <result column="COUNTRY_CODE" jdbcType="VARCHAR" property="countryCode" />
+    <result column="PROVINCE_CN" jdbcType="VARCHAR" property="provinceCn" />
+    <result column="CITY_CN" jdbcType="VARCHAR" property="cityCn" />
+    <result column="REGION_CN" jdbcType="VARCHAR" property="regionCn" />
+    <result column="DETAIL_ADDRESS" jdbcType="VARCHAR" property="detailAddress" />
+    <result column="CREATE_USER" jdbcType="DECIMAL" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="UPDATE_USER" jdbcType="DECIMAL" property="updateUser" />
+    <result column="DATA_LEVEL" jdbcType="TINYINT" property="dataLevel" />
+    <result column="ORDER_NO" jdbcType="DOUBLE" property="orderNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    S_ID, CUSTOMER_ID, ADDRESSEE_NAME, PHONE_NUMBER, TELEPHONE_NUMBER, DEFAULT_STATUS, 
+    POST_CODE, COUNTRY_CN, COUNTRY_CODE, PROVINCE_CN, CITY_CN, REGION_CN, DETAIL_ADDRESS, 
+    CREATE_USER, CREATE_TIME, UPDATE_TIME, UPDATE_USER, DATA_LEVEL, ORDER_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cim_receive_address
+    where S_ID = #{sId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from cim_receive_address
+    where S_ID = #{sId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.dsys.cim.bean.ReceiveAddress">
+    insert into cim_receive_address (S_ID, CUSTOMER_ID, ADDRESSEE_NAME, 
+      PHONE_NUMBER, TELEPHONE_NUMBER, DEFAULT_STATUS, 
+      POST_CODE, COUNTRY_CN, COUNTRY_CODE, 
+      PROVINCE_CN, CITY_CN, REGION_CN, 
+      DETAIL_ADDRESS, CREATE_USER, CREATE_TIME, 
+      UPDATE_TIME, UPDATE_USER, DATA_LEVEL, 
+      ORDER_NO)
+    values (#{sId,jdbcType=DECIMAL}, #{customerId,jdbcType=DECIMAL}, #{addresseeName,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=DECIMAL}, #{telephoneNumber,jdbcType=VARCHAR}, #{defaultStatus,jdbcType=TINYINT}, 
+      #{postCode,jdbcType=DECIMAL}, #{countryCn,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, 
+      #{provinceCn,jdbcType=VARCHAR}, #{cityCn,jdbcType=VARCHAR}, #{regionCn,jdbcType=VARCHAR}, 
+      #{detailAddress,jdbcType=VARCHAR}, #{createUser,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=DECIMAL}, #{dataLevel,jdbcType=TINYINT}, 
+      #{orderNo,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsys.cim.bean.ReceiveAddress">
+    insert into cim_receive_address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        S_ID,
+      </if>
+      <if test="customerId != null">
+        CUSTOMER_ID,
+      </if>
+      <if test="addresseeName != null">
+        ADDRESSEE_NAME,
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER,
+      </if>
+      <if test="telephoneNumber != null">
+        TELEPHONE_NUMBER,
+      </if>
+      <if test="defaultStatus != null">
+        DEFAULT_STATUS,
+      </if>
+      <if test="postCode != null">
+        POST_CODE,
+      </if>
+      <if test="countryCn != null">
+        COUNTRY_CN,
+      </if>
+      <if test="countryCode != null">
+        COUNTRY_CODE,
+      </if>
+      <if test="provinceCn != null">
+        PROVINCE_CN,
+      </if>
+      <if test="cityCn != null">
+        CITY_CN,
+      </if>
+      <if test="regionCn != null">
+        REGION_CN,
+      </if>
+      <if test="detailAddress != null">
+        DETAIL_ADDRESS,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="dataLevel != null">
+        DATA_LEVEL,
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=DECIMAL},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=DECIMAL},
+      </if>
+      <if test="addresseeName != null">
+        #{addresseeName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="telephoneNumber != null">
+        #{telephoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultStatus != null">
+        #{defaultStatus,jdbcType=TINYINT},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=DECIMAL},
+      </if>
+      <if test="countryCn != null">
+        #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCn != null">
+        #{provinceCn,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCn != null">
+        #{cityCn,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCn != null">
+        #{regionCn,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null">
+        #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=DECIMAL},
+      </if>
+      <if test="dataLevel != null">
+        #{dataLevel,jdbcType=TINYINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsys.cim.bean.ReceiveAddress">
+    update cim_receive_address
+    <set>
+      <if test="customerId != null">
+        CUSTOMER_ID = #{customerId,jdbcType=DECIMAL},
+      </if>
+      <if test="addresseeName != null">
+        ADDRESSEE_NAME = #{addresseeName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER = #{phoneNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="telephoneNumber != null">
+        TELEPHONE_NUMBER = #{telephoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultStatus != null">
+        DEFAULT_STATUS = #{defaultStatus,jdbcType=TINYINT},
+      </if>
+      <if test="postCode != null">
+        POST_CODE = #{postCode,jdbcType=DECIMAL},
+      </if>
+      <if test="countryCn != null">
+        COUNTRY_CN = #{countryCn,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null">
+        COUNTRY_CODE = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCn != null">
+        PROVINCE_CN = #{provinceCn,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCn != null">
+        CITY_CN = #{cityCn,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCn != null">
+        REGION_CN = #{regionCn,jdbcType=VARCHAR},
+      </if>
+      <if test="detailAddress != null">
+        DETAIL_ADDRESS = #{detailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER = #{updateUser,jdbcType=DECIMAL},
+      </if>
+      <if test="dataLevel != null">
+        DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},
+      </if>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where S_ID = #{sId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsys.cim.bean.ReceiveAddress">
+    update cim_receive_address
+    set CUSTOMER_ID = #{customerId,jdbcType=DECIMAL},
+      ADDRESSEE_NAME = #{addresseeName,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=DECIMAL},
+      TELEPHONE_NUMBER = #{telephoneNumber,jdbcType=VARCHAR},
+      DEFAULT_STATUS = #{defaultStatus,jdbcType=TINYINT},
+      POST_CODE = #{postCode,jdbcType=DECIMAL},
+      COUNTRY_CN = #{countryCn,jdbcType=VARCHAR},
+      COUNTRY_CODE = #{countryCode,jdbcType=VARCHAR},
+      PROVINCE_CN = #{provinceCn,jdbcType=VARCHAR},
+      CITY_CN = #{cityCn,jdbcType=VARCHAR},
+      REGION_CN = #{regionCn,jdbcType=VARCHAR},
+      DETAIL_ADDRESS = #{detailAddress,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{updateUser,jdbcType=DECIMAL},
+      DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},
+      ORDER_NO = #{orderNo,jdbcType=DOUBLE}
+    where S_ID = #{sId,jdbcType=DECIMAL}
+  </update>
+</mapper>

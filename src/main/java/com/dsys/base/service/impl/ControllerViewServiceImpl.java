@@ -3,7 +3,7 @@ package com.dsys.base.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.dsys.base.bean.ControllerView;
 import com.dsys.base.dao.ControllerViewMapper;
-import com.dsys.base.service.IControllerViewService;
+import com.dsys.common.IControllerViewService;
 import com.dsys.base.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;

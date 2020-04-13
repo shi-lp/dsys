@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dsys.base.bean.User;
-import com.dsys.base.service.IUserService;
+import com.dsys.common.IUserService;
 import com.dsys.base.service.impl.UidServiceImpl;
 import com.dsys.base.util.Constants;
 import com.xfvape.uid.utils.NetUtils;
@@ -145,7 +145,7 @@ public class UserController {
 	@PostMapping(value = "/getUsers")
 	public Map<String,Object> getUser(@RequestParam(defaultValue = "1") int pageNo,
 			@RequestParam(defaultValue = "10") int pageSize) {
-		Map<String,Object> renderJson = new HashMap <>();
+		Map<String,Object> renderJson = new HashMap <String,Object>();
 		List<User> userList = userService.getUserList(null);
 		renderJson.put("data",userList);
 		renderJson.put("status",Constants.STATUS_SUCCESS);
@@ -157,7 +157,7 @@ public class UserController {
 	@PostMapping(value = "/getUserPage")
 	public Map<String,Object> getUserPage(@RequestParam(defaultValue = "1") int pageNo,
 									  @RequestParam(defaultValue = "10") int pageSize) {
-		Map<String,Object> renderJson = new HashMap <>();
+		Map<String,Object> renderJson = new HashMap <String,Object>();
 		// 只对其后的第一个查询有效
 		Page page = new Page(pageNo,pageSize);
 		page = userService.selectPageUser(page,new User());

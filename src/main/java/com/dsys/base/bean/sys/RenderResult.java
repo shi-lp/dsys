@@ -25,7 +25,7 @@ public class RenderResult implements Serializable {
 
     private String token;
 
-    private Map <String,Object> data = new HashMap <>();
+    private Map <String,Object> data = new HashMap <String,Object>();
 
     public void putData(String key, Object value) {
         data.put(key, value);

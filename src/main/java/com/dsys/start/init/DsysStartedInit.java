@@ -1,13 +1,11 @@
 package com.dsys.start.init;
 
-import com.dsys.base.service.IDictInfoService;
+import com.dsys.common.IDictInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Priority;
 
 /**
  * 

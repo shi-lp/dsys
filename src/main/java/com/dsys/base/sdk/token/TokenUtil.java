@@ -45,7 +45,7 @@ public class TokenUtil{
         // 私钥及加密算法
         Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
         // 设置头信息
-        HashMap<String, Object> header = new HashMap<>(2);
+        HashMap<String, Object> header = new HashMap<String, Object>(2);
         header.put("typ","JWT");
         header.put("alg","HS256");
         // 附带username和userID生成签名
