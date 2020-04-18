@@ -1,8 +1,9 @@
 package com.dsys.cim.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.dsys.common.model.BaseModel;
-import java.util.Date;
 import lombok.Data;
 
 /**     
@@ -15,6 +16,8 @@ import lombok.Data;
 @Data
 @TableName("cim_receive_address")
 public class ReceiveAddress extends BaseModel{
+    
+    @TableId(value="id",type= IdType.INPUT)
     private Long sId;
 
     private Long customerId;

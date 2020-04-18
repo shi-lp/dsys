@@ -1,7 +1,5 @@
 package com.dsys.base.sdk.interceptor;
 
-import com.alibaba.druid.support.json.JSONUtils;
-import com.dsys.base.util.response.ResponseResult;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
@@ -114,9 +112,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 	}
 	
 	private static void printJson(HttpServletResponse response, String code) {
-		ResponseResult responseResult = new ResponseResult(10086,false,"token过期,请重新登陆",null);
-		String content = JSONUtils.toJSONString(responseResult);
-		printContent(response, content);
+//		ResponseResult responseResult = new ResponseResult(10086,false,"token过期,请重新登陆",null);
+//		String content = JSONUtils.toJSONString(responseResult);
+//		printContent(response, content);
 	}
 	
 	

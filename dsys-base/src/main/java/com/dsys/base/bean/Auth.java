@@ -1,5 +1,6 @@
 package com.dsys.base.bean;
 
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.dsys.common.model.BaseModel;
 
 
@@ -18,6 +19,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@TableName(value="bp_auth_tb")
 public class Auth extends BaseModel  {
 
 	

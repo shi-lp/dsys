@@ -1,7 +1,9 @@
 package com.dsys.cim.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.dsys.cim.bean.ReceiveAddress;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**     

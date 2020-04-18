@@ -1,5 +1,6 @@
 package com.dsys.base.bean;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -45,6 +46,7 @@ public class UserRole implements Serializable{
 	/**
 	 * 非PO字段
 	 */
+	@TableField(exist = false)
 	private String roleName;
 
 }

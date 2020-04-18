@@ -1,7 +1,9 @@
 package com.dsys.base.bean;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import com.dsys.common.model.BaseModel;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import lombok.Data;
 
@@ -14,7 +16,7 @@ import lombok.Data;
  * @date 2019年11月5日
  */
 @Data
-public class Role implements Serializable{
+public class Role extends BaseModel implements Serializable{
 
 	
 	/**  描述   (@author: shilp) */      
@@ -22,6 +24,7 @@ public class Role implements Serializable{
 	private static final long serialVersionUID = 9165182322517178659L;
 
 	// 主键
+	@TableId(value="id",type= IdType.INPUT)
 	private String sId;
 
 	// 角色编码
@@ -42,16 +45,5 @@ public class Role implements Serializable{
 	// 优先级
 	private Integer point;
 
-	// 创建人
-	private String createUser;
-
-	// 创建时间
-	private Timestamp createTime;
-
-	// 修改人
-	private String updateUser;
-
-	// 修改时间
-	private Timestamp updateTime;
 	
 }

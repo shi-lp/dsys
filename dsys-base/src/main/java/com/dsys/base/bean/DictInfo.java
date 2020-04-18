@@ -1,5 +1,7 @@
 package com.dsys.base.bean;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.dsys.common.model.BaseModel;
 import java.io.Serializable;
 
@@ -24,6 +26,7 @@ public class DictInfo extends BaseModel implements Serializable{
 	    
 	private static final long serialVersionUID = -202323157244431265L;
 
+	@TableId(value="id",type= IdType.INPUT)
 	private String sId;
 
 	// 字典编码
@@ -50,16 +53,5 @@ public class DictInfo extends BaseModel implements Serializable{
 	// 当前信息是否生效 1、生效 0、未生效 2、被删除
 	private String doFlag;
 
-	/*// 创建人
-	private String createUser;
-
-	// 创建时间
-	private Timestamp createTime;
-
-	// 修改人
-	private String updateUser;
-
-	// 修改时间
-	private Timestamp updateTime;*/
 
 }

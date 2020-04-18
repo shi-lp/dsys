@@ -1,11 +1,12 @@
 package com.dsys.base.service.impl;
 
+import com.dsys.base.sdk.common.Constants;
+import com.dsys.common.util.ToolUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.dsys.base.util.ToolUtil;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import com.dsys.base.bean.Model;
 import com.dsys.base.bean.RoleModel;
 import com.dsys.base.service.IRoleModelService;
-import com.dsys.common.util.Constants;
 
 
 /**        

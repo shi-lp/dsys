@@ -1,5 +1,7 @@
 package com.dsys.base.bean;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
 import com.dsys.common.model.BaseModel;
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -23,6 +25,7 @@ public class Model extends BaseModel implements Serializable{
 	private static final long serialVersionUID = 1325745707586739005L;
 
 	/** 主键 */
+	@TableId(value="id",type= IdType.INPUT)
 	private String sId;
 	
 	/** 父Id */
@@ -52,17 +55,5 @@ public class Model extends BaseModel implements Serializable{
 	/** 是否启用 */
 	private String doEnable;
 
-	/** 创建人 */
-	private String createUser;
-
-	/** 创建时间 */
-	private Timestamp createTime;
-
-	/** 修改人 */
-	private String updateUser;
-
-	/** 修改时间 */
-	private Timestamp updateTime;
-	
 
 }

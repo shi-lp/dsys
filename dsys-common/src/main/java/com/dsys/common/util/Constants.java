@@ -2,10 +2,6 @@ package com.dsys.common.util;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
-import com.dsys.base.bean.DictInfo;
-import com.dsys.base.bean.Model;
 
 /**
  * Title: Constant.java Description: 基础参数初始化
@@ -57,11 +53,6 @@ public class Constants {
 	// 失败状态
 	public static final String STATUS_ERROR = "1";
 	
-	// 角色对应模块的缓存Map,
-	public static final ConcurrentHashMap<String,List<Model>> ROLE_MODEL_CACHE = new ConcurrentHashMap<String, List<Model>>();
-	
-	// 数据字典缓存模块
-	public static final ConcurrentHashMap<String,List<DictInfo>> DICTINFO_CACHE = new ConcurrentHashMap<String, List<DictInfo>>();
 	
 	// 不拦截请求结尾格式 // 不用拦截静态页面.css/.js
 	public static final List<String> UNINTERCEPTOR = Arrays.asList(new String[]{"/**/*.js","/**/*.css",

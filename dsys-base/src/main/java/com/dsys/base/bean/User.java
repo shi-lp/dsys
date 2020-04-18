@@ -1,6 +1,7 @@
 package com.dsys.base.bean;
 
-import java.sql.Timestamp;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.dsys.common.model.BaseModel;
 
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -18,14 +19,20 @@ import lombok.NoArgsConstructor;
  * @date 2019年11月5日
  */
 @Data
-// 使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数
+/**     
+ * @discription 使用后添加一个构造函数，该构造函数含有所有已声明字段属性参数/
+*/
 @AllArgsConstructor
-// 使用后创建一个无参构造函数
+/**
+ * 使用后创建一个无参构造函数
+ */
 @NoArgsConstructor
-public class User {
+public class User extends BaseModel{
 
 	// 主键
-	// 通用Mapper插入后返回主键
+	/**
+	 * @discription / 通用Mapper插入后返回主键
+	*/
 	@TableId(value = "id",type = IdType.INPUT)
 	private String sId;
 
@@ -65,16 +72,8 @@ public class User {
 	// 优先级
 	private String level;
 
-	// 创建人
-	private String createUser;
-
-	// 创建时间
-	private Timestamp createTime;
-
-	// 修改人
-	private String updateUser;
-
-	// 修改时间
-	private Timestamp updateTime;
+	
+	@TableField(exist = false)
+	private String token;
 
 }
