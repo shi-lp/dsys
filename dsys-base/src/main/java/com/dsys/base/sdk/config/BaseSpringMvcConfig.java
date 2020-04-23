@@ -1,7 +1,7 @@
-package com.dsys.base.sdk.mvcConfig;
+package com.dsys.base.sdk.config;
 
 import com.dsys.base.sdk.interceptor.AuthenticationInterceptor;
-import com.dsys.base.util.Constants;
+import com.dsys.common.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
-package com.dsys.start.init;
+package com.dsys.base.sdk.init;
 
-import com.dsys.common.IDictInfoService;
+import com.dsys.base.service.IDictInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -35,7 +35,8 @@ public class DsysStartedInit implements ApplicationRunner {
      */
     private void initDictInfos() {
         log.info("--------数据字典信息开始加载-------");
-        dictInfoService.getAllDict("All");
+//        dictInfoService.getAllDict("All");
+    
     }
 
     /**

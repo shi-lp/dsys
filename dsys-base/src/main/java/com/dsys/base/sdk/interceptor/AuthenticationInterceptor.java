@@ -22,7 +22,7 @@ import com.dsys.base.sdk.token.UserLoginToken;
 import com.dsys.base.service.IUserService;
 
 /**
- * Title: AuthenticationInterceptor.java Description: 登陆Token校验拦截器
+ * Title: AuthenticationInterceptor.java Description: 登陆Token校验拦截器(aop)
  * 
  * @author shilp Company: Copyright: Copyright (c) 2019
  * @created 2019年12月11日 下午8:34:48

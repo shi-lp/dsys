@@ -5,13 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
+<!--        <version>2.3.0.BUILD-SNAPSHOT</version>-->
         <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.dsys</groupId>
-    <artifactId>goods</artifactId>
+    <artifactId>dsys-goods</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>goods</name>
+    <name>dsys-goods</name>
     <description>goods</description>
 
     <properties>

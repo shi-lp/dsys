@@ -52,8 +52,8 @@ import com.dsys.common.sdk.redisson.util.RedissLockUtil;
  * @author shilp
  */
 @Slf4j
-@Configuration
-@EnableConfigurationProperties(RedisProperties.class)
+//@Configuration
+//@EnableConfigurationProperties(RedisProperties.class)
 public class RedisConfig extends CachingConfigurerSupport{
 
     @Autowired
@@ -229,7 +229,7 @@ public class RedisConfig extends CachingConfigurerSupport{
      *
      * @return
      */
-//    @Bean
+    @Bean
     IDistributedLocker distributedLocker(RedissonClient redissonClient) {
         IDistributedLocker locker = new RedissonDistributedLockerImpl();
         locker.setRedissonClient(redissonClient);

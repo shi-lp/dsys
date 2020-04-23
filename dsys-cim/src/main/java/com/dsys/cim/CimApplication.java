@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Param 
  * @Return 
 */
-@MapperScan(basePackages="com.dsys.cim.mapper")
+@MapperScan(basePackages={"com.dsys.cim.mapper","com.dsys.common.worknode.mapper"})
 @SpringBootApplication
 public class CimApplication{
 

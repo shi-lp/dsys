@@ -6,7 +6,9 @@ import com.dsys.cim.bean.ReceiveAddress;
 import com.dsys.cim.service.ICustomerInfo;
 import com.dsys.cim.service.IReceiveAddressService;
 import com.dsys.common.sdk.response.DsysResponse;
+import com.dsys.common.sdk.response.RenderResponse;
 import com.dsys.common.util.ToolUtil;
+import com.dsys.common.worknode.service.impl.UidServiceImpl;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ import java.util.List;
  * @author shilp
  * @since 2020-04-14
  */
+// @ResponseBody + @Controller
 @RestController
 @RequestMapping("/cim/customer-info")
 public class CustomerInfoController{
@@ -30,6 +33,9 @@ public class CustomerInfoController{
     @Autowired
     private IReceiveAddressService receiveAddressService;
     
+    @Autowired
+    private UidServiceImpl uidService;
+    
     /**
      * @discription 通过用户ID获取收货地址列表
      * @author shilp
@@ -37,17 +43,16 @@ public class CustomerInfoController{
      * @Param
      * @Return
     */
-    @GetMapping(value="/getReceiveAddressList")
-    public DsysResponse getAddressList(@RequestParam("customerId")String customerId){
-        DsysResponse dr = new DsysResponse();
+    @RequestMapping(value="/receiveAddresses/{customerId}",method = RequestMethod.GET,produces = "application/json")
+//    @GetMapping(value="/getReceiveAddressList")@RequestParam("customerId") String customerId,
+    public RenderResponse getAddressList (@PathVariable String customerId){
         List<ReceiveAddress> raList = new ArrayList<>();
         if(ToolUtil.isNullOrEmpty(customerId)){
             raList = receiveAddressService.getAddressByCustomerId(Long.valueOf(customerId));
-            dr.success(raList);
         }else{
-            dr.failure("传入用户ID为空");
+            return RenderResponse.fail("传入用户ID为空");
         }
-        return dr;
+        return RenderResponse.success(raList);
     }
     
     /**
@@ -61,6 +66,7 @@ public class CustomerInfoController{
     public DsysResponse addCustomerInfo(@RequestBody CustomerInfo customerInfo){
         DsysResponse dr = new DsysResponse();
         if(ToolUtil.isNullOrEmpty(customerInfo)){
+            customerInfo.setSId(uidService.getUid());
             customerInfoService.saveOrUpdate(customerInfo);
             dr.success();
         }

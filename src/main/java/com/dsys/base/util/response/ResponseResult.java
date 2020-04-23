@@ -1,6 +1,7 @@
 package com.dsys.base.util.response;
 
 import java.io.Serializable;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,9 +15,7 @@ import lombok.ToString;
  * @Description: TODO
  * @created 2020/3/25 17:07
  */
-@Getter
-@Setter
-@ToString
+@Data
 public class ResponseResult implements Serializable{
     
     /**

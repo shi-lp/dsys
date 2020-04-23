@@ -19,7 +19,6 @@ import lombok.Data;
  * @version 1.0
 */
 @Data
-@Component
 @ConfigurationProperties(prefix = "spring.datasource", ignoreUnknownFields = false)
 public class DataProperties {
 	

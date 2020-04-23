@@ -1,4 +1,4 @@
-package com.dsys.base.sdk.rabbitmq;
+package com.dsys.common.sdk.rabbit;
 
 /**
  * Package: com.dsys.base.sdk.rabbitmq.properties
@@ -8,7 +8,7 @@ package com.dsys.base.sdk.rabbitmq;
  * Modified By:
  */
 
-import com.dsys.base.sdk.rabbitmq.properties.RabbitProperties;
+import com.dsys.common.sdk.rabbit.properties.RabbitProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;

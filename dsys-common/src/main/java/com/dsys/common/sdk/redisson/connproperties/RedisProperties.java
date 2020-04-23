@@ -15,8 +15,7 @@ import lombok.Data;
  * @version 1.0
  */
 @Data
-@Component
-@ConfigurationProperties(prefix = "spring.redis")
+//@ConfigurationProperties(prefix = "spring.redis")
 public class RedisProperties {
 
 	private String host;

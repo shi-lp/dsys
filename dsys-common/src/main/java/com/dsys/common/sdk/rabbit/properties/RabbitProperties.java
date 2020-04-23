@@ -1,4 +1,4 @@
-package com.dsys.base.sdk.rabbitmq.properties;
+package com.dsys.common.sdk.rabbit.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

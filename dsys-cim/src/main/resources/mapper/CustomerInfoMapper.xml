@@ -1,199 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dsys.cim.mapper.CustomerInfoMapper">
-  <resultMap id="BaseResultMap" type="com.dsys.cim.bean.CustomerInfo">
-    <id column="S_ID" jdbcType="DECIMAL" property="sId" />
-    <result column="NAME" jdbcType="VARCHAR" property="name" />
-    <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
-    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
-    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
-    <result column="ONLINE_STATUS" jdbcType="INTEGER" property="onlineStatus" />
-    <result column="LOGIN_DRIVE" jdbcType="DECIMAL" property="loginDrive" />
-    <result column="LOGIN_IP" jdbcType="VARCHAR" property="loginIp" />
-    <result column="SIGN_IN_DATE" jdbcType="TIMESTAMP" property="signInDate" />
-    <result column="LOGOUT_DATE" jdbcType="TIMESTAMP" property="logoutDate" />
-    <result column="LAST_SIGN_IN_DATE" jdbcType="TIMESTAMP" property="lastSignInDate" />
-    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
-    <result column="DATA_LEVEL" jdbcType="TINYINT" property="dataLevel" />
-    <result column="LEVEL_NO" jdbcType="INTEGER" property="levelNo" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    S_ID, NAME, ACCOUNT, PHONE_NUMBER, EMAIL, ONLINE_STATUS, LOGIN_DRIVE, LOGIN_IP, SIGN_IN_DATE, 
-    LOGOUT_DATE, LAST_SIGN_IN_DATE, CREATE_DATE, DATA_LEVEL, LEVEL_NO
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from cim_customer_info
-    where S_ID = #{sId,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
-    delete from cim_customer_info
-    where S_ID = #{sId,jdbcType=DECIMAL}
-  </delete>
-  <insert id="insert" parameterType="com.dsys.cim.bean.CustomerInfo">
-    insert into cim_customer_info (S_ID, NAME, ACCOUNT, 
-      PHONE_NUMBER, EMAIL, ONLINE_STATUS, 
-      LOGIN_DRIVE, LOGIN_IP, SIGN_IN_DATE, 
-      LOGOUT_DATE, LAST_SIGN_IN_DATE, CREATE_DATE, 
-      DATA_LEVEL, LEVEL_NO)
-    values (#{sId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
-      #{phoneNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{onlineStatus,jdbcType=INTEGER}, 
-      #{loginDrive,jdbcType=DECIMAL}, #{loginIp,jdbcType=VARCHAR}, #{signInDate,jdbcType=TIMESTAMP}, 
-      #{logoutDate,jdbcType=TIMESTAMP}, #{lastSignInDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{dataLevel,jdbcType=TINYINT}, #{levelNo,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.dsys.cim.bean.CustomerInfo">
-    insert into cim_customer_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="sId != null">
-        S_ID,
-      </if>
-      <if test="name != null">
-        NAME,
-      </if>
-      <if test="account != null">
-        ACCOUNT,
-      </if>
-      <if test="phoneNumber != null">
-        PHONE_NUMBER,
-      </if>
-      <if test="email != null">
-        EMAIL,
-      </if>
-      <if test="onlineStatus != null">
-        ONLINE_STATUS,
-      </if>
-      <if test="loginDrive != null">
-        LOGIN_DRIVE,
-      </if>
-      <if test="loginIp != null">
-        LOGIN_IP,
-      </if>
-      <if test="signInDate != null">
-        SIGN_IN_DATE,
-      </if>
-      <if test="logoutDate != null">
-        LOGOUT_DATE,
-      </if>
-      <if test="lastSignInDate != null">
-        LAST_SIGN_IN_DATE,
-      </if>
-      <if test="createDate != null">
-        CREATE_DATE,
-      </if>
-      <if test="dataLevel != null">
-        DATA_LEVEL,
-      </if>
-      <if test="levelNo != null">
-        LEVEL_NO,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="sId != null">
-        #{sId,jdbcType=DECIMAL},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="phoneNumber != null">
-        #{phoneNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="onlineStatus != null">
-        #{onlineStatus,jdbcType=INTEGER},
-      </if>
-      <if test="loginDrive != null">
-        #{loginDrive,jdbcType=DECIMAL},
-      </if>
-      <if test="loginIp != null">
-        #{loginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="signInDate != null">
-        #{signInDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logoutDate != null">
-        #{logoutDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastSignInDate != null">
-        #{lastSignInDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null">
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="dataLevel != null">
-        #{dataLevel,jdbcType=TINYINT},
-      </if>
-      <if test="levelNo != null">
-        #{levelNo,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.dsys.cim.bean.CustomerInfo">
-    update cim_customer_info
-    <set>
-      <if test="name != null">
-        NAME = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="account != null">
-        ACCOUNT = #{account,jdbcType=VARCHAR},
-      </if>
-      <if test="phoneNumber != null">
-        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        EMAIL = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="onlineStatus != null">
-        ONLINE_STATUS = #{onlineStatus,jdbcType=INTEGER},
-      </if>
-      <if test="loginDrive != null">
-        LOGIN_DRIVE = #{loginDrive,jdbcType=DECIMAL},
-      </if>
-      <if test="loginIp != null">
-        LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="signInDate != null">
-        SIGN_IN_DATE = #{signInDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="logoutDate != null">
-        LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastSignInDate != null">
-        LAST_SIGN_IN_DATE = #{lastSignInDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createDate != null">
-        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="dataLevel != null">
-        DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},
-      </if>
-      <if test="levelNo != null">
-        LEVEL_NO = #{levelNo,jdbcType=INTEGER},
-      </if>
-    </set>
-    where S_ID = #{sId,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.dsys.cim.bean.CustomerInfo">
-    update cim_customer_info
-    set NAME = #{name,jdbcType=VARCHAR},
-      ACCOUNT = #{account,jdbcType=VARCHAR},
-      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
-      EMAIL = #{email,jdbcType=VARCHAR},
-      ONLINE_STATUS = #{onlineStatus,jdbcType=INTEGER},
-      LOGIN_DRIVE = #{loginDrive,jdbcType=DECIMAL},
-      LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
-      SIGN_IN_DATE = #{signInDate,jdbcType=TIMESTAMP},
-      LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},
-      LAST_SIGN_IN_DATE = #{lastSignInDate,jdbcType=TIMESTAMP},
-      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-      DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},
-      LEVEL_NO = #{levelNo,jdbcType=INTEGER}
-    where S_ID = #{sId,jdbcType=DECIMAL}
-  </update>
+<!--  <resultMap id="BaseResultMap" type="com.dsys.cim.bean.CustomerInfo">-->
+<!--    <id column="S_ID" jdbcType="DECIMAL" property="sId" />-->
+<!--    <result column="NAME" jdbcType="VARCHAR" property="name" />-->
+<!--    <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />-->
+<!--    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />-->
+<!--    <result column="EMAIL" jdbcType="VARCHAR" property="email" />-->
+<!--    <result column="ONLINE_STATUS" jdbcType="INTEGER" property="onlineStatus" />-->
+<!--    <result column="LOGIN_DRIVE" jdbcType="DECIMAL" property="loginDrive" />-->
+<!--    <result column="LOGIN_IP" jdbcType="VARCHAR" property="loginIp" />-->
+<!--    <result column="SIGN_IN_DATE" jdbcType="TIMESTAMP" property="signInDate" />-->
+<!--    <result column="LOGOUT_DATE" jdbcType="TIMESTAMP" property="logoutDate" />-->
+<!--    <result column="LAST_SIGN_IN_DATE" jdbcType="TIMESTAMP" property="lastSignInDate" />-->
+<!--    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />-->
+<!--    <result column="DATA_LEVEL" jdbcType="TINYINT" property="dataLevel" />-->
+<!--    <result column="LEVEL_NO" jdbcType="INTEGER" property="levelNo" />-->
+<!--  </resultMap>-->
+<!--  <sql id="Base_Column_List">-->
+<!--    S_ID, NAME, ACCOUNT, PHONE_NUMBER, EMAIL, ONLINE_STATUS, LOGIN_DRIVE, LOGIN_IP, SIGN_IN_DATE, -->
+<!--    LOGOUT_DATE, LAST_SIGN_IN_DATE, CREATE_DATE, DATA_LEVEL, LEVEL_NO-->
+<!--  </sql>-->
+<!--  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from cim_customer_info-->
+<!--    where S_ID = #{sId,jdbcType=DECIMAL}-->
+<!--  </select>-->
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">-->
+<!--    delete from cim_customer_info-->
+<!--    where S_ID = #{sId,jdbcType=DECIMAL}-->
+<!--  </delete>-->
+<!--  <insert id="insert" parameterType="com.dsys.cim.bean.CustomerInfo">-->
+<!--    insert into cim_customer_info (S_ID, NAME, ACCOUNT, -->
+<!--      PHONE_NUMBER, EMAIL, ONLINE_STATUS, -->
+<!--      LOGIN_DRIVE, LOGIN_IP, SIGN_IN_DATE, -->
+<!--      LOGOUT_DATE, LAST_SIGN_IN_DATE, CREATE_DATE, -->
+<!--      DATA_LEVEL, LEVEL_NO)-->
+<!--    values (#{sId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, -->
+<!--      #{phoneNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{onlineStatus,jdbcType=INTEGER}, -->
+<!--      #{loginDrive,jdbcType=DECIMAL}, #{loginIp,jdbcType=VARCHAR}, #{signInDate,jdbcType=TIMESTAMP}, -->
+<!--      #{logoutDate,jdbcType=TIMESTAMP}, #{lastSignInDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, -->
+<!--      #{dataLevel,jdbcType=TINYINT}, #{levelNo,jdbcType=INTEGER})-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" parameterType="com.dsys.cim.bean.CustomerInfo">-->
+<!--    insert into cim_customer_info-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="sId != null">-->
+<!--        S_ID,-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        NAME,-->
+<!--      </if>-->
+<!--      <if test="account != null">-->
+<!--        ACCOUNT,-->
+<!--      </if>-->
+<!--      <if test="phoneNumber != null">-->
+<!--        PHONE_NUMBER,-->
+<!--      </if>-->
+<!--      <if test="email != null">-->
+<!--        EMAIL,-->
+<!--      </if>-->
+<!--      <if test="onlineStatus != null">-->
+<!--        ONLINE_STATUS,-->
+<!--      </if>-->
+<!--      <if test="loginDrive != null">-->
+<!--        LOGIN_DRIVE,-->
+<!--      </if>-->
+<!--      <if test="loginIp != null">-->
+<!--        LOGIN_IP,-->
+<!--      </if>-->
+<!--      <if test="signInDate != null">-->
+<!--        SIGN_IN_DATE,-->
+<!--      </if>-->
+<!--      <if test="logoutDate != null">-->
+<!--        LOGOUT_DATE,-->
+<!--      </if>-->
+<!--      <if test="lastSignInDate != null">-->
+<!--        LAST_SIGN_IN_DATE,-->
+<!--      </if>-->
+<!--      <if test="createDate != null">-->
+<!--        CREATE_DATE,-->
+<!--      </if>-->
+<!--      <if test="dataLevel != null">-->
+<!--        DATA_LEVEL,-->
+<!--      </if>-->
+<!--      <if test="levelNo != null">-->
+<!--        LEVEL_NO,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="sId != null">-->
+<!--        #{sId,jdbcType=DECIMAL},-->
+<!--      </if>-->
+<!--      <if test="name != null">-->
+<!--        #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="account != null">-->
+<!--        #{account,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="phoneNumber != null">-->
+<!--        #{phoneNumber,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="email != null">-->
+<!--        #{email,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="onlineStatus != null">-->
+<!--        #{onlineStatus,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="loginDrive != null">-->
+<!--        #{loginDrive,jdbcType=DECIMAL},-->
+<!--      </if>-->
+<!--      <if test="loginIp != null">-->
+<!--        #{loginIp,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="signInDate != null">-->
+<!--        #{signInDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="logoutDate != null">-->
+<!--        #{logoutDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastSignInDate != null">-->
+<!--        #{lastSignInDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="createDate != null">-->
+<!--        #{createDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="dataLevel != null">-->
+<!--        #{dataLevel,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="levelNo != null">-->
+<!--        #{levelNo,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="com.dsys.cim.bean.CustomerInfo">-->
+<!--    update cim_customer_info-->
+<!--    <set>-->
+<!--      <if test="name != null">-->
+<!--        NAME = #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="account != null">-->
+<!--        ACCOUNT = #{account,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="phoneNumber != null">-->
+<!--        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="email != null">-->
+<!--        EMAIL = #{email,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="onlineStatus != null">-->
+<!--        ONLINE_STATUS = #{onlineStatus,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--      <if test="loginDrive != null">-->
+<!--        LOGIN_DRIVE = #{loginDrive,jdbcType=DECIMAL},-->
+<!--      </if>-->
+<!--      <if test="loginIp != null">-->
+<!--        LOGIN_IP = #{loginIp,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="signInDate != null">-->
+<!--        SIGN_IN_DATE = #{signInDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="logoutDate != null">-->
+<!--        LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="lastSignInDate != null">-->
+<!--        LAST_SIGN_IN_DATE = #{lastSignInDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="createDate != null">-->
+<!--        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},-->
+<!--      </if>-->
+<!--      <if test="dataLevel != null">-->
+<!--        DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},-->
+<!--      </if>-->
+<!--      <if test="levelNo != null">-->
+<!--        LEVEL_NO = #{levelNo,jdbcType=INTEGER},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where S_ID = #{sId,jdbcType=DECIMAL}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="com.dsys.cim.bean.CustomerInfo">-->
+<!--    update cim_customer_info-->
+<!--    set NAME = #{name,jdbcType=VARCHAR},-->
+<!--      ACCOUNT = #{account,jdbcType=VARCHAR},-->
+<!--      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},-->
+<!--      EMAIL = #{email,jdbcType=VARCHAR},-->
+<!--      ONLINE_STATUS = #{onlineStatus,jdbcType=INTEGER},-->
+<!--      LOGIN_DRIVE = #{loginDrive,jdbcType=DECIMAL},-->
+<!--      LOGIN_IP = #{loginIp,jdbcType=VARCHAR},-->
+<!--      SIGN_IN_DATE = #{signInDate,jdbcType=TIMESTAMP},-->
+<!--      LOGOUT_DATE = #{logoutDate,jdbcType=TIMESTAMP},-->
+<!--      LAST_SIGN_IN_DATE = #{lastSignInDate,jdbcType=TIMESTAMP},-->
+<!--      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},-->
+<!--      DATA_LEVEL = #{dataLevel,jdbcType=TINYINT},-->
+<!--      LEVEL_NO = #{levelNo,jdbcType=INTEGER}-->
+<!--    where S_ID = #{sId,jdbcType=DECIMAL}-->
+<!--  </update>-->
 </mapper>
