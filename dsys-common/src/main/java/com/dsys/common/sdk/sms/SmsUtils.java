@@ -30,16 +30,16 @@ import lombok.extern.slf4j.Slf4j;
 public class SmsUtils {
 
     // 产品名称:云通信短信API产品,开发者无需替换
-    static final String product = "Dysmsapi";
+    static final String product = "";
     // 产品域名,开发者无需替换
-    static final String domain = "dysmsapi.aliyuncs.com";
+    static final String domain = "";
 
-    static final String accessKeyId = "LTAI4FxK69hxfrKRHinhbEGU";
-    static final String accessKeySecret = "W4MvTStr60amD5FnFv55cMZk0h9rCI";
+    static final String accessKeyId = "";
+    static final String accessKeySecret = "";
     // 必填:短信签名-可在短信控制台中找到
     static final String signName = "dsys验证码签名";
     // 必填:短信模板-可在短信控制台中找到
-    static final String templateName = "SMS_181196694";
+    static final String templateName = "";
 
     /**
      * @param smsType     短信类型
