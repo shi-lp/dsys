@@ -1,7 +1,7 @@
 package com.dsys.base.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.dsys.base.bean.SysSetup;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.dsys.api.bean.base.SysSetup;
 
 /**
  * Title: SysStupMapper
@@ -13,4 +13,5 @@ import com.dsys.base.bean.SysSetup;
  * @created 2020/4/15 21:53
  */
 public interface SysSetupMapper extends BaseMapper<SysSetup>{
+
 }

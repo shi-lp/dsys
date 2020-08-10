@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsys.base.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.dsys.api.bean.base.User">
+        <id column="S_ID" jdbcType="BIGINT" property="sId" />
+        <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+        <result column="PWD" jdbcType="VARCHAR" property="pwd" />
+        <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+        <result column="MOBILE_PHONE" jdbcType="VARCHAR" property="mobilePhone" />
+        <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+        <result column="ONLINE_STATUS" jdbcType="VARCHAR" property="onlineStatus" />
+        <result column="IP" jdbcType="VARCHAR" property="ip" />
+        <result column="E_MAIL" jdbcType="VARCHAR" property="eMail" />
+        <result column="THEME_TYPE" jdbcType="VARCHAR" property="themeType" />
+        <result column="DEVICE_TYPE" jdbcType="VARCHAR" property="deviceType" />
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+        <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+        <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag" />
+        <result column="LEVEL" jdbcType="BIGINT" property="level" />
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    S_ID, USER_NAME, PWD, ACCOUNT, MOBILE_PHONE, PHONE, ONLINE_STATUS, IP, E_MAIL, THEME_TYPE,
+    DEVICE_TYPE, CREATE_USER, UPDATE_USER, DO_FLAG, LEVEL, CREATE_TIME, UPDATE_TIME
+  </sql>
+    <select id="selectPages" resultType="com.dsys.api.bean.base.User" >
+        SELECT
+            <include refid="Base_Column_List"></include>
+        FROM bp_user_tb
+        ${ew.customSqlSegment}
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+    <choose>
+        <when test="roleId != null and roleId != ''">
+            AND S_ID IN (SELECT USER_ID FROM BP_USERROLE_TB WHERE ROLE_CODE = #{roleId})
+        </when>
+    </choose>
+    <choose>
+        <when test="deptId != null and deptId != ''">
+            AND S_ID IN (SELECT USER_ID FROM BP_USERROLE_TB WHERE ROLE_CODE = #{roleId})
+        </when>
+    </choose>
+    </select>
+</mapper>

@@ -1,7 +1,15 @@
 package com.dsys.base.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.dsys.api.bean.base.Model;
+import com.dsys.api.common.VxeOption;
+import org.apache.ibatis.annotations.Param;
 import java.util.List;
-import com.dsys.base.bean.Model;
 
 /**        
  * Title: ModelDao.java    
@@ -13,20 +21,9 @@ import com.dsys.base.bean.Model;
  * @update 2019年12月16日 下午7:54:21 
  * @version 1.0
 */
-public interface ModelMapper{
-
-	public List<Model> findAllModel();
-
-	int deleteByPrimaryKey(String sId);
-
-	public int addModel(Model record);
-
-	int insertSelective(Model record);
-
-	Model selectByPrimaryKey(String sId);
-
-	int updateByPrimaryKeySelective(Model record);
-
-	int updateByPrimaryKey(Model record);
-
+public interface ModelMapper extends BaseMapper<Model>{
+    
+    public IPage<Model> selectModelList (Page<Model> page,@Param(Constants.WRAPPER) Wrapper<Model> wrapper);
+    
+    public List<VxeOption> getOptions(@Param(Constants.WRAPPER) Wrapper<Model> entityWrapper);
 }

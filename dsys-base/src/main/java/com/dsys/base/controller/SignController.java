@@ -1,12 +1,13 @@
 package com.dsys.base.controller;
 
 import com.aliyuncs.exceptions.ClientException;
-import com.dsys.common.mail.service.IMailService;
-import com.dsys.common.phone.service.IPhoneService;
+import com.dsys.common.function.mail.service.IMailService;
+import com.dsys.common.function.phone.service.IPhoneService;
 import com.dsys.common.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +27,11 @@ import java.util.Map;
  * @version 1.0
 */
 @RestController
-@RequestMapping("/sign")
+@RequestMapping("/base/sign")
 public class SignController {
 	
-	private static final Logger log = LoggerFactory.getLogger(SignController.class);
+	@Autowired
+	private ApplicationContext applicationContext;
 	
 	@Autowired
 	private IMailService mailService;

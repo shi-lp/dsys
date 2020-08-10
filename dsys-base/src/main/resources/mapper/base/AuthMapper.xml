@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsys.base.mapper.AuthMapper">
+    <resultMap id="BaseResultMap" type="com.dsys.api.bean.base.Auth">
+        <id column="S_ID" jdbcType="BIGINT" property="sId"/>
+        <result column="AUTH_CODE" jdbcType="VARCHAR" property="authCode"/>
+        <result column="AUTH_NAME" jdbcType="VARCHAR" property="authName"/>
+        <result column="DO_FLAG" jdbcType="INTEGER" property="doFlag"/>
+        <result column="DO_SIDE" jdbcType="VARCHAR" property="doSide"/>
+        <result column="PARENT_MODEL" jdbcType="BIGINT" property="parentModel"/>
+        <result column="MODEL_ID" jdbcType="BIGINT" property="modelId"/>
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    S_ID, AUTH_CODE, AUTH_NAME, DO_FLAG, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME
+  </sql>
+    <select id="selectAllList" resultMap="BaseResultMap">
+    SELECT
+        t.S_ID,
+        t.AUTH_CODE,
+        t.AUTH_NAME,
+        t.DO_FLAG,
+        t.do_side,
+        t.model_id,
+        t.parent_model,
+        t.auth_context,
+        m.MODEL_NAME AS MODEL_NAME
+    from bp_auth_tb t
+    left join bp_model_tb m on m.S_ID = MODEL_ID
+    where t.DO_FLAG &lt;&gt; #{doFlag};
+    </select>
+
+</mapper>

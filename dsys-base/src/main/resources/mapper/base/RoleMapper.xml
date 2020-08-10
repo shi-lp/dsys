@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsys.base.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.dsys.api.bean.base.Role">
+        <id column="S_ID" jdbcType="BIGINT" property="sId"/>
+        <result column="ROLE_CODE" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName"/>
+        <result column="BELONG_SYS" jdbcType="VARCHAR" property="belongSys"/>
+        <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag"/>
+        <result column="LEVEL" jdbcType="INTEGER" property="level"/>
+        <result column="POINT" jdbcType="INTEGER" property="point"/>
+        <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="DEPT_ID" jdbcType="BIGINT" property="deptId" />
+    </resultMap>
+    <sql id="Base_Column_List">
+		${alias}.S_ID, ${alias}.ROLE_CODE, ${alias}.ROLE_NAME, ${alias}.BELONG_SYS, ${alias}.DO_FLAG, ${alias}.LEVEL,
+		${alias}.POINT, ${alias}.CREATE_USER, ${alias}.CREATE_TIME,${alias}.UPDATE_USER, ${alias}.UPDATE_TIME,
+		${alias}.dept_Id
+
+	  </sql>
+    <select id="selectOptions" resultType="com.dsys.api.common.VxeOption">
+        SELECT ROLE_CODE AS VALUE,
+        ROLE_NAME AS LABEL
+        FROM BP_ROLE_TB
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectLists" resultType="com.dsys.api.bean.base.Role">
+        select
+        <include refid="Base_Column_List"><property name="alias" value="t1"/></include>,t2.dept_Name as DEPT_NAME
+        from BP_ROLE_TB t1
+        left join bp_dept_tb t2 on t1.dept_id = t2.s_id
+        where t1.do_flag &lt;&gt; #{doFlag}
+    </select>
+</mapper>

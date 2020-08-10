@@ -1,6 +1,6 @@
 package com.dsys.base.mapper;
 
-import com.dsys.base.bean.RoleModel;
+import com.dsys.api.bean.base.RoleModel;
 /**
  * Title: RoleModelDao.java    
  * Description: 角色模块表操作
@@ -12,8 +12,6 @@ import com.dsys.base.bean.RoleModel;
  * @version 1.0
 */
 public interface RoleModelMapper{
-
-    int insert(RoleModel record);
 
     int insertSelective(RoleModel record);
 

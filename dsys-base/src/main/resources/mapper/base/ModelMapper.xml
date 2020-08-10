@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsys.base.mapper.ModelMapper">
+	<resultMap id="BaseResultMap" type="com.dsys.api.bean.base.Model">
+		<id column="S_ID" jdbcType="BIGINT" property="sId" />
+		<result column="PARENT_ID" jdbcType="BIGINT" property="parentId" />
+		<result column="MODEL_NAME" jdbcType="VARCHAR" property="modelName" />
+		<result column="CLIENT_TYPE" jdbcType="VARCHAR" property="clientType" />
+		<result column="MODEL_URL" jdbcType="VARCHAR" property="modelUrl" />
+		<result column="MODEL_NOTE" jdbcType="VARCHAR" property="modelNote" />
+		<result column="MODEL_ORDER" jdbcType="INTEGER" property="modelOrder" />
+		<result column="LEVEL" jdbcType="INTEGER" property="level" />
+		<result column="DO_FLAG" jdbcType="INTEGER" property="doFlag" />
+		<result column="DO_ENABLE" jdbcType="VARCHAR" property="doEnable" />
+		<result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		S_ID, PARENT_ID, MODEL_NAME, CLIENT_TYPE, MODEL_URL,
+		MODEL_NOTE,
+		MODEL_ORDER, LEVEL,
+		DO_FLAG, DO_ENABLE, CREATE_USER,
+		CREATE_TIME, UPDATE_USER, UPDATE_TIME, PARENT_NAME
+	</sql>
+
+	<select id="selectModelList" resultMap="BaseResultMap">
+		select
+		T.S_ID, T.PARENT_ID, T.MODEL_NAME, T.CLIENT_TYPE, T.MODEL_URL,
+		T.MODEL_NOTE,
+		T.MODEL_ORDER, T.LEVEL,
+		T.DO_FLAG, T.DO_ENABLE, T.CREATE_USER,
+		T.CREATE_TIME, T.UPDATE_USER, T.UPDATE_TIME, C.MODEL_NAME AS PARENT_NAME
+		from bp_model_tb T
+		LEFT JOIN bp_model_tb C ON T.PARENT_ID = C.S_ID
+		where t.S_ID &lt;&gt; '-1'
+	</select>
+
+	<select id="getOptions" resultType="com.dsys.api.common.VxeOption">
+		SELECT
+			S_ID AS VALUE,
+			MODEL_NAME AS LABEL
+		FROM
+			BP_MODEL_TB
+			${ew.customSqlSegment}
+	</select>
+
+</mapper>

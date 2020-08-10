@@ -1,6 +1,15 @@
 package com.dsys.base.mapper;
 
-import com.dsys.base.bean.Role;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.dsys.api.bean.base.Role;
+import com.dsys.api.common.VxeOption;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Title: RoleDao.java
@@ -14,16 +23,9 @@ import com.dsys.base.bean.Role;
  * @update 2019年12月13日 下午11:00:11
  */
 
-public interface RoleMapper{
-
-    int deleteByPrimaryKey(String sId);
-
-    int insert(Role record);
-
-    Role getRoleById(String sId);
-
-    int updateByPrimaryKeySelective(Role record);
-
-    int updateByPrimaryKey(Role record);
-
+public interface RoleMapper extends BaseMapper<Role>{
+    
+    public List<VxeOption> selectOptions (@Param(Constants.WRAPPER) Wrapper<Role> wrapper);
+    
+    public List<Role> selectLists (Map<String,Object> paramMap);
 }

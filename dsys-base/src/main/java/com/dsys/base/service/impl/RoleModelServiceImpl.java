@@ -1,6 +1,9 @@
 package com.dsys.base.service.impl;
 
-import com.dsys.base.sdk.common.Constants;
+import com.dsys.api.bean.base.Model;
+import com.dsys.api.bean.base.RoleModel;
+import com.dsys.api.service.base.IRoleModelService;
+import com.dsys.common.util.Constants;
 import com.dsys.common.util.ToolUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,12 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
-import com.dsys.base.bean.Model;
-import com.dsys.base.bean.RoleModel;
-import com.dsys.base.service.IRoleModelService;
 
 
 /**        
@@ -26,9 +24,8 @@ import com.dsys.base.service.IRoleModelService;
  * @update 2019年12月17日 上午9:01:30 
  * @version 1.0
 */
-@Primary
 @Service
-public class RoleModelServiceImpl implements IRoleModelService {
+public class RoleModelServiceImpl implements IRoleModelService{
 
 	  
 	@Override
@@ -63,7 +60,7 @@ public class RoleModelServiceImpl implements IRoleModelService {
 	private Map<String, Model> modelList2Map (List<Model> models) {
 		Map<String, Model> tempMap = new HashMap<String,Model>();
 		for(Model m : models){
-			tempMap.put(m.getSId(),m);
+			tempMap.put(String.valueOf(m.getSId()),m);
 		}
 		return tempMap;
 	}

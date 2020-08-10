@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsys.base.mapper.DeptMapper">
+    <resultMap id="BaseResultMap" type="com.dsys.api.bean.base.Dept">
+        <id column="S_ID" jdbcType="BIGINT" property="sId" />
+        <result column="P_ID" jdbcType="BIGINT" property="pId" />
+        <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+        <result column="DO_FLAG" jdbcType="VARCHAR" property="doFlag" />
+        <result column="DEPT_CODE" jdbcType="VARCHAR" property="deptCode" />
+        <result column="DEPT_CONTEXT" jdbcType="TIMESTAMP" property="deptContext" />
+        <result column="LEVEL_NO" jdbcType="BIGINT" property="levelNo" />
+    </resultMap>
+    <sql id="Base_Column_List">
+    S_ID, P_ID, DEPT_NAME, DO_FLAG, DEPT_CODE, DEPT_CONTEXT, LEVEL_NO
+  </sql>
+    <select id="selectDeptOption" resultType="com.dsys.api.common.VxeOption">
+    select DEPT_CODE AS value,DEPT_NAME AS label
+    from bp_dept_tb
+    ${ew.customSqlSegment}
+  </select>
+</mapper>

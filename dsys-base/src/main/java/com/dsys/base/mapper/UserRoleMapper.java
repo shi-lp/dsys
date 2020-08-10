@@ -1,7 +1,10 @@
 package com.dsys.base.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.dsys.api.bean.base.UserRole;
 import java.util.List;
-import com.dsys.base.bean.UserRole;
+import org.apache.ibatis.annotations.Select;
 
 /**        
  * Title: UserRoleDao.java    
@@ -13,12 +16,9 @@ import com.dsys.base.bean.UserRole;
  * @update 2019年12月13日 下午11:01:52 
  * @version 1.0
 */
-public interface UserRoleMapper {
+public interface UserRoleMapper extends BaseMapper<UserRole>{
 
-	List<UserRole> listByUserId(String userId);
-
-	int insert(UserRole record);
-
-	int insertSelective(UserRole record);
-
+	
+	@Select("SELECT ROLE_CODE FROM BP_USERROLE_TB ${ew.customSqlSegment}")
+	public List<String> selectRolesList (LambdaQueryWrapper<UserRole> queryWrapper);
 }

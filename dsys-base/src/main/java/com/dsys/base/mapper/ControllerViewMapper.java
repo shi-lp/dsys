@@ -1,7 +1,7 @@
 package com.dsys.base.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.dsys.base.bean.ControllerView;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.dsys.api.bean.base.ControllerView;
 
 
 /**
@@ -14,6 +14,6 @@ import com.dsys.base.bean.ControllerView;
  * @Description: TODO
  * @created 2020/1/19 10:24
  */
-public interface ControllerViewMapper extends BaseMapper <ControllerView> {
+public interface ControllerViewMapper extends BaseMapper<ControllerView>{
 
 }

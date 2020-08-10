@@ -1,7 +1,7 @@
 package com.dsys.base.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.dsys.base.bean.RoleAuth;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.dsys.api.bean.base.RoleAuth;
 
 /**
  * Package: com.dsys.base.dao
